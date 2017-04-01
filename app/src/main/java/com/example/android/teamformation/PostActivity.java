@@ -23,11 +23,7 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-//        Parse.initialize(new Parse.Configuration.Builder(this)
-//                .applicationId("teamfor")
-//                .server("http://teamfor.herokuapp.com/parse/")
-//                .build()
-//        );
+
     }
 
     public void post(View view) {
@@ -39,7 +35,7 @@ public class PostActivity extends AppCompatActivity {
         System.out.println((String) emailText.getText().toString());
 
         ParseObject testObject = new ParseObject("Post");
-        testObject.put("content", emailText);
+        testObject.put("content", emailText.getText().toString());
         testObject.saveInBackground();
 
 

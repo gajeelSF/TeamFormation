@@ -21,11 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("teamfor")
-                .server("http://teamfor.herokuapp.com/parse/")
-                .build()
-        );
+
     }
 
     public void signUp(View view) {
