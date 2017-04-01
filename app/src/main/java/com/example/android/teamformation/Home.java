@@ -82,6 +82,9 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_timeline) {
+            TimelineFragment timelineFragment = new TimelineFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.layout_for_fragements, timelineFragment).commit();
 
         } else if (id == R.id.nav_user) {
 
