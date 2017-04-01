@@ -15,7 +15,7 @@
         android:layout_marginTop="136dp"
         android:ems="10"
         android:hint="Idea"
-        android:inputType="textCapCharacters"
+        android:inputType="text"
         android:singleLine="false"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -68,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // Hooray! The user is logged in.
-                    System.out.println("Logged in!!!");
+                    Toast login = Toast.makeText(context, "LOGGED IN !!!", Toast.LENGTH_SHORT);
+                    login.show();
                     Intent intent = new Intent(context, Home.class);
                     startActivity(intent);
                 } else {
                     // Signup failed. Look at the ParseException to see what happened.
-                    System.out.println(e.toString());
+                    Toast login = Toast.makeText(context, "苟利国家生死以 岂因祸福避趋之\n\\口-口/", Toast.LENGTH_SHORT);
+                    login.show();
                 }
             }
         });

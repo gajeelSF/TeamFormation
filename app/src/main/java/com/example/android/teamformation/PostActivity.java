@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.parse.*;
+
 import android.app.Application;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,14 +40,15 @@ public class PostActivity extends AppCompatActivity {
         System.out.println((String) ideaText.getText().toString());
 
         ParseObject postObject = new ParseObject("Post");
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        postObject.put("user", currentUser.getUsername());
         postObject.put("email", emailText.getText().toString());
         postObject.put("skill", skillText.getText().toString());
-        postObject.put("idea", ideaText.getText().toString());
-
+        postObject.put("content", ideaText.getText().toString());
 
         postObject.saveInBackground();
 
-
+        finish();
 
     }
 }
