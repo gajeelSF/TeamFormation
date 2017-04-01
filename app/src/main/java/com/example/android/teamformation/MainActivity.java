@@ -1,6 +1,7 @@
 package com.example.android.teamformation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUp(View view) {
-        Context context = getApplicationContext();
+        final Context context = getApplicationContext();
         Button button = (Button) findViewById(R.id.SignUpButton);
 
         EditText usernameText = (EditText) findViewById(R.id.usernameText);
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null) {
                     // Hooray! Let them use the app now.
                     System.out.println("Success!!!");
+                    Intent intent = new Intent(context, Home.class);
+                    startActivity(intent);
                 } else {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logIn(View view) {
-        Context context = getApplicationContext();
+        final Context context = getApplicationContext();
         Button button = (Button) findViewById(R.id.LogInButton);
 
         EditText usernameText = (EditText) findViewById(R.id.usernameText);
@@ -70,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     // Hooray! The user is logged in.
                     System.out.println("Logged in!!!");
+                    Intent intent = new Intent(context, Home.class);
+                    startActivity(intent);
                 } else {
                     // Signup failed. Look at the ParseException to see what happened.
                     System.out.println(e.toString());
