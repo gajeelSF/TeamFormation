@@ -31,12 +31,20 @@ public class PostActivity extends AppCompatActivity {
         Button button = (Button) findViewById(R.id.SignUpButton);
 
         EditText emailText = (EditText) findViewById(R.id.email);
+        EditText skillText = (EditText) findViewById(R.id.skill);
+        EditText ideaText = (EditText) findViewById(R.id.idea);
 
         System.out.println((String) emailText.getText().toString());
+        System.out.println((String) skillText.getText().toString());
+        System.out.println((String) ideaText.getText().toString());
 
-        ParseObject testObject = new ParseObject("Post");
-        testObject.put("content", emailText.getText().toString());
-        testObject.saveInBackground();
+        ParseObject postObject = new ParseObject("Post");
+        postObject.put("email", emailText.getText().toString());
+        postObject.put("skill", skillText.getText().toString());
+        postObject.put("idea", ideaText.getText().toString());
+
+
+        postObject.saveInBackground();
 
 
 
