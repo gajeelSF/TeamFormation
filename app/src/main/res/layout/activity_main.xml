@@ -40,10 +40,12 @@
         android:layout_alignStart="@+id/SignUpButton" />
 
     <Button
+        android:id="@+id/SignUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/SignUpButton"
         android:layout_below="@+id/LogInButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="signUp"
+        android:text="Sign Up" />
+
 </RelativeLayout>
