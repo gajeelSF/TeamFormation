@@ -23,11 +23,11 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-        Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("teamfor")
-                .server("http://teamfor.herokuapp.com/parse/")
-                .build()
-        );
+//        Parse.initialize(new Parse.Configuration.Builder(this)
+//                .applicationId("teamfor")
+//                .server("http://teamfor.herokuapp.com/parse/")
+//                .build()
+//        );
     }
 
     public void post(View view) {

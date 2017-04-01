@@ -1,5 +1,6 @@
 package com.example.android.teamformation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -29,10 +30,16 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                System.out.println("1");
+//
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
-                Intent post = new Intent(getApplicationContext(), PostActivity.class);
+                Intent post = new Intent(view.getContext() , PostActivity.class);
+//                System.out.println("2");
                 startActivity(post);
+//                System.out.println("3");
+
             }
         });
 
