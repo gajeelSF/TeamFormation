@@ -26,12 +26,17 @@ public class PostAdapter extends ArrayAdapter<Post> {
         Post post = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_timeline, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_post, parent, false);
         }
         // Lookup view for data population
         TextView tvSkill = (TextView) convertView.findViewById(R.id.skill);
         // Populate the data into the template view using the data object
+
+        if(post.skill == null) {
+            post.skill = "";
+        }
         tvSkill.setText(post.skill);
+
         // Return the completed view to render on screen
         return convertView;
     }

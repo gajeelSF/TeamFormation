@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class TimelineFragment extends Fragment {
 
-    List<ParseObject> posts;
+    ArrayList<Post> arrayOfPosts = new ArrayList<>();
 
     public TimelineFragment() {
         // Required empty public constructor
@@ -40,16 +40,27 @@ public class TimelineFragment extends Fragment {
                             "Retrieved " + postList.size(), Toast.LENGTH_SHORT);
                     login.show();
 
-                    posts = postList;
+                    // attach the adapter to the listview
+                    for (ParseObject i : postList) {
+                        Post newPost = new Post(i);
+                        arrayOfPosts.add(newPost);
+                    }
+                    PostAdapter postAdapter = new PostAdapter(getContext(), arrayOfPosts);
+                    ListView listView = (ListView) getView().findViewById(R.id.timeline);
+                    listView.setAdapter(postAdapter);
+
 
                 } else {
+                    Toast login = Toast.makeText(getContext(),
+                            e.getLocalizedMessage(), Toast.LENGTH_SHORT);
+                    login.show();
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }
         });
-        ArrayList<Post> arrayOfPosts = new ArrayList<>();
-        PostAdapter postAdapter = new PostAdapter(getContext(), arrayOfPosts);
-        ListView listView = (ListView) .findViewById(R.id.timeline);
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_timeline, container, false);
     }
