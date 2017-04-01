@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("teamformation")
-                .server("http://teamformation.herokuapp.com/lahackteam/parse")
+                .applicationId("teamfor")
+                .server("http://teamfor.herokuapp.com/parse/")
                 .build()
         );
     }
@@ -55,5 +55,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void logIn(View view) {
+        Context context = getApplicationContext();
+        Button button = (Button) findViewById(R.id.LogInButton);
+
+        EditText usernameText = (EditText) findViewById(R.id.usernameText);
+        EditText passwordText = (EditText) findViewById(R.id.passwordText);
+
+        String username = (String) usernameText.getText().toString();
+        String password = (String) passwordText.getText().toString();
+
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            public void done(ParseUser user, ParseException e) {
+                if (user != null) {
+                    // Hooray! The user is logged in.
+                    System.out.println("Logged in!!!");
+                } else {
+                    // Signup failed. Look at the ParseException to see what happened.
+                    System.out.println(e.toString());
+                }
+            }
+        });
+    }
 
 }
