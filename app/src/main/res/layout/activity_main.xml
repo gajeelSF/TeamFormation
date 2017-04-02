@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/passwordText"
         android:layout_alignStart="@+id/passwordText"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="50dp"
         android:hint="User Name" />
 
     <EditText
@@ -36,11 +36,12 @@
         android:id="@+id/LogInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="logIn"
+        android:text="Log In"
+        android:layout_below="@+id/emailtext"
         android:layout_alignLeft="@+id/SignUpButton"
         android:layout_alignStart="@+id/SignUpButton"
-        android:layout_centerVertical="true"
-        android:onClick="logIn"
-        android:text="Log In" />
+        android:layout_marginTop="50dp" />
 
     <Button
         android:id="@+id/SignUpButton"
@@ -50,5 +51,16 @@
         android:layout_centerHorizontal="true"
         android:onClick="signUp"
         android:text="Sign Up" />
+
+    <EditText
+        android:id="@+id/emailtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="Email (for Sign up only)"
+        android:inputType="textEmailAddress" />
 
 </RelativeLayout>

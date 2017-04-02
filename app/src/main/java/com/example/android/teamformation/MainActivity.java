@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.parse.*;
+
 import android.app.Application;
 import android.view.View;
 import android.widget.Button;
@@ -30,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         EditText usernameText = (EditText) findViewById(R.id.usernameText);
         EditText passwordText = (EditText) findViewById(R.id.passwordText);
+        EditText emailText = (EditText) findViewById(R.id.emailtext);
 
         ParseUser user = new ParseUser();
-        user.setUsername((String) usernameText.getText().toString());
-        user.setPassword((String) passwordText.getText().toString());
+        user.setUsername(usernameText.getText().toString());
+        user.setPassword(passwordText.getText().toString());
+        user.setEmail(emailText.getText().toString());
 
 
-        System.out.println((String) usernameText.getText().toString());
-        System.out.println((String) passwordText.getText().toString());
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
