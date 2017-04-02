@@ -17,6 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,7 +30,6 @@ public class Home extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
 
@@ -59,6 +62,15 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // side bar
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        TextView sideUser = (TextView) headerView.findViewById(R.id.sideUser);
+        TextView sideEmail = (TextView) headerView.findViewById(R.id.sideEmail);
+        sideUser.setText(currentUser.getUsername());
+        sideEmail.setText(currentUser.getEmail());
     }
 
     @Override
