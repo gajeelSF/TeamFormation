@@ -10,25 +10,27 @@
     tools:context="com.example.android.teamformation.MainActivity">
 
     <EditText
+        android:id="@+id/usernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/usernameText"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="51dp"
-        android:layout_alignRight="@+id/passwordText"
         android:layout_alignEnd="@+id/passwordText"
         android:layout_alignLeft="@+id/passwordText"
-        android:layout_alignStart="@+id/passwordText" />
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_marginTop="51dp"
+        android:hint="User Name" />
 
     <EditText
+        android:id="@+id/passwordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordText"
         android:layout_below="@+id/usernameText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Passwork"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/LogInButton"
