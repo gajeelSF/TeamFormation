@@ -41,8 +41,8 @@ public class TimelineFragment extends Fragment {
                     login.show();
 
                     // attach the adapter to the listview
-                    for (ParseObject i : postList) {
-                        Post newPost = new Post(i);
+                    for (int i = postList.size() - 1; i >= 0; i--) {
+                        Post newPost = new Post(postList.get(i));
                         arrayOfPosts.add(newPost);
                     }
                     PostAdapter postAdapter = new PostAdapter(getContext(), arrayOfPosts);
