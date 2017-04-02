@@ -118,7 +118,8 @@ public class Home extends AppCompatActivity
             manager.beginTransaction().replace(R.id.layout_for_fragements, timelineFragment).commit();
 
         } else if (id == R.id.nav_user) {
-
+            Intent setting = new Intent(this, SetActivity.class);
+            startActivity(setting);
         } else if (id == R.id.nav_my_post) {
             MyPostFragment myPostFragment = new MyPostFragment();
             FragmentManager manager = getSupportFragmentManager();
