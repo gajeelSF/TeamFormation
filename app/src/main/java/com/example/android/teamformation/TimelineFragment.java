@@ -1,12 +1,14 @@
 package com.example.android.teamformation;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,6 +50,18 @@ public class TimelineFragment extends Fragment {
                     ListView listView = (ListView) getView().findViewById(R.id.timeline);
                     listView.setAdapter(postAdapter);
 
+                    // add action listener.
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> a,
+                                                View v, int position, long id) {
+                            Post post = (Post) a.getItemAtPosition(position);
+                            Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+                            intent.putExtra("com.example.android.teamformation.Post", post);
+                            startActivity(intent);
+                        }
+                    });
+
 
                 } else {
                     Toast login = Toast.makeText(getContext(),
@@ -57,14 +71,9 @@ public class TimelineFragment extends Fragment {
                 }
             }
         });
-
-
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_timeline, container, false);
     }
-
-
 
 
 }
