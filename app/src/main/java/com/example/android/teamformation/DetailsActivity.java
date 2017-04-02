@@ -6,11 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
 public class DetailsActivity extends AppCompatActivity {
+
+    Post post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         Bundle bundle = getIntent().getExtras();
-        Post post = bundle.getParcelable("com.example.android.teamformation.Post");
+        post = bundle.getParcelable("com.example.android.teamformation.Post");
 
         TextView overview = (TextView) findViewById(R.id.overviewtext);
         TextView skill = (TextView) findViewById(R.id.skilltext);
@@ -33,5 +39,19 @@ public class DetailsActivity extends AppCompatActivity {
         if(!currentUser.getUsername().equals(post.user)) {
             delete.setVisibility(View.GONE);
         }
+    }
+
+    public void deleteClicked(View view) {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
+        query.getInBackground(post.id, new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    object.deleteInBackground();
+                    finish();
+                } else {
+                    // something went wrong
+                }
+            }
+        });
     }
 }

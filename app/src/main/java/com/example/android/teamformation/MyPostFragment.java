@@ -23,6 +23,7 @@ import java.util.List;
  */
 public class MyPostFragment extends Fragment {
 
+
     ArrayList<Post> arrayOfPosts = new ArrayList<>();
 
     public MyPostFragment() {
@@ -33,6 +34,7 @@ public class MyPostFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
         ParseUser currentUser = ParseUser.getCurrentUser();
         query.whereEqualTo("user", currentUser.getUsername());

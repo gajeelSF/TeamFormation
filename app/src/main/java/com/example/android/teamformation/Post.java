@@ -3,7 +3,10 @@ package com.example.android.teamformation;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 /**
  * Created by jiazhengzhao on 4/1/17.
@@ -16,6 +19,7 @@ public class Post implements Parcelable {
     public boolean idea_visible;
     public String user;
     public String overview;
+    public String id;
 
     public Post(ParseObject parseObject) {
         this.email = parseObject.getString("email");
@@ -24,8 +28,8 @@ public class Post implements Parcelable {
         this.user = parseObject.getString("user");
         this.idea_visible = parseObject.getBoolean("idea_visible");
         this.overview = parseObject.getString("overview");
+        this.id = parseObject.getObjectId();
     }
-
 
     protected Post(Parcel in) {
         email = in.readString();
@@ -34,6 +38,7 @@ public class Post implements Parcelable {
         idea_visible = in.readByte() != 0;
         user = in.readString();
         overview = in.readString();
+        id = in.readString();
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -61,5 +66,6 @@ public class Post implements Parcelable {
         parcel.writeByte((byte) (idea_visible ? 1 : 0));
         parcel.writeString(user);
         parcel.writeString(overview);
+        parcel.writeString(id);
     }
 }
