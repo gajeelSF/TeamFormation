@@ -19,36 +19,41 @@ import android.widget.Toast;
 import static android.R.attr.duration;
 
 public class PostActivity extends AppCompatActivity {
-
+    ParseUser user;
+    EditText emailText;
+    EditText skillText;
+    EditText ideaText;
+    EditText overviewText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-
-    }
-
-    public void post(View view) {
         final Context context = getApplicationContext();
         Button button = (Button) findViewById(R.id.SignUpButton);
 
-        EditText emailText = (EditText) findViewById(R.id.email);
-        EditText skillText = (EditText) findViewById(R.id.skill);
-        EditText ideaText = (EditText) findViewById(R.id.idea);
-        EditText overviewText = (EditText) findViewById(R.id.overview);
+        user = ParseUser.getCurrentUser();
+        emailText = (EditText) findViewById(R.id.email);
+        skillText = (EditText) findViewById(R.id.skill);
+        ideaText = (EditText) findViewById(R.id.idea);
+        overviewText = (EditText) findViewById(R.id.overview);
 
+        Toast toast = Toast.
+                makeText(context, user.getEmail().toString(), Toast.LENGTH_SHORT);
+        toast.show();
+        emailText.setText(user.getEmail().toString(), TextView.BufferType.EDITABLE);
+    }
+
+    public void post(View view) {
         ParseObject postObject = new ParseObject("Post");
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        postObject.put("user", currentUser.getUsername());
+        postObject.put("user", user.getUsername());
         postObject.put("email", emailText.getText().toString());
         postObject.put("skill", skillText.getText().toString());
         postObject.put("content", ideaText.getText().toString());
         postObject.put("overview", overviewText.getText().toString());
 
-
         postObject.saveInBackground();
 
         setResult(RESULT_OK, null);
         finish();
-
     }
 }

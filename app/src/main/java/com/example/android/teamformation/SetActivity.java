@@ -22,9 +22,7 @@ public class SetActivity extends AppCompatActivity {
         ParseUser user = ParseUser.getCurrentUser();
         user.put("email", emailText.getText().toString());
         user.saveInBackground();
-        Toast toast = Toast.
-                makeText(getApplicationContext(), "we reached here", Toast.LENGTH_SHORT);
-        toast.show();
+
     }
 
     public void setName(View view) {
