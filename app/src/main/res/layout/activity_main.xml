@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Passwork"
+        android:hint="Password"
         android:inputType="textPassword" />
 
     <Button
