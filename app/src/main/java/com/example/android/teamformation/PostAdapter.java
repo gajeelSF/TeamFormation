@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -30,12 +32,25 @@ public class PostAdapter extends ArrayAdapter<Post> {
         }
         // Lookup view for data population
         TextView tvSkill = (TextView) convertView.findViewById(R.id.skill);
+
+        TextView tvContent = (TextView) convertView.findViewById(R.id.content);
+        TextView tvUser = (TextView) convertView.findViewById(R.id.user);
         // Populate the data into the template view using the data object
 
         if(post.skill == null) {
-            post.skill = "";
+            post.skill = "No Skill Required";
         }
         tvSkill.setText(post.skill);
+
+        if(post.content == null) {
+            post.content = "No content";
+        }
+        tvContent.setText(post.content);
+
+        if(post.user == null ) {
+            post.user = "Unknown User";
+        }
+        tvUser.setText(post.user);
 
         // Return the completed view to render on screen
         return convertView;

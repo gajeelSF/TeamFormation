@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/skill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/skill"/>
-</LinearLayout>
+            android:layout_marginTop="17dp"
+            android:text="skill"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="content"
+            android:layout_below="@+id/skill"
+            android:layout_alignLeft="@+id/skill"
+            android:layout_alignStart="@+id/skill" />
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/content"
+            android:layout_alignStart="@+id/content"
+            android:layout_below="@+id/content"
+            android:layout_marginTop="11dp"
+            android:text="user" />
+</RelativeLayout>
