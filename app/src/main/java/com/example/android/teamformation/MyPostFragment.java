@@ -1,6 +1,7 @@
 package com.example.android.teamformation;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,11 @@ import static android.app.Activity.RESULT_OK;
 public class MyPostFragment extends Fragment {
 
 
+    int MYACTIVITY_REQUEST_CODE = 101;
+
     ArrayList<Post> arrayOfPosts = new ArrayList<>();
+
+    PostAdapter postAdapter;
 
     public MyPostFragment() {
         // Required empty public constructor
@@ -54,7 +59,7 @@ public class MyPostFragment extends Fragment {
                         Post newPost = new Post(postList.get(i));
                         arrayOfPosts.add(newPost);
                     }
-                    PostAdapter postAdapter = new PostAdapter(getContext(), arrayOfPosts);
+                    postAdapter = new PostAdapter(getContext(), arrayOfPosts);
                     ListView listView = (ListView) getView().findViewById(R.id.myPost);
                     listView.setAdapter(postAdapter);
 
@@ -66,7 +71,7 @@ public class MyPostFragment extends Fragment {
                             Post post = (Post) a.getItemAtPosition(position);
                             Intent intent = new Intent(v.getContext(), DetailsActivity.class);
                             intent.putExtra("com.example.android.teamformation.Post", post);
-                            startActivity(intent);
+                            startActivityForResult(intent,MYACTIVITY_REQUEST_CODE);
                         }
                     });
 
@@ -85,4 +90,12 @@ public class MyPostFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_my_post, container, false);
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == MYACTIVITY_REQUEST_CODE) && (resultCode == Activity.RESULT_OK))
+            postAdapter.notifyDataSetChanged();
+    }
 }

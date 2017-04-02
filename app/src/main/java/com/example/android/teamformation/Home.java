@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.view.MenuItem;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    int currentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,11 @@ public class Home extends AppCompatActivity
             public void onClick(View view) {
                 Intent post = new Intent(view.getContext() , PostActivity.class);
                 startActivityForResult(post, 1);
-
+                if (currentId == R.id.nav_timeline) {
+                    TimelineFragment timelineFragment = new TimelineFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction().replace(R.id.layout_for_fragements, timelineFragment).commit();
+                }
             }
         });
 
@@ -91,6 +98,7 @@ public class Home extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        currentId = id;
 
         if (id == R.id.nav_timeline) {
             TimelineFragment timelineFragment = new TimelineFragment();
