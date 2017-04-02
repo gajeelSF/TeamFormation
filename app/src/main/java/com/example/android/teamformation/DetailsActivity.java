@@ -14,7 +14,7 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         Bundle bundle = getIntent().getExtras();
-        Post post = bundle.getParcelable("com.example.android.teamformation");
+        Post post = bundle.getParcelable("com.example.android.teamformation.Post");
 
         TextView overview = (TextView) findViewById(R.id.overviewtext);
         TextView skill = (TextView) findViewById(R.id.skilltext);

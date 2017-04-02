@@ -27,6 +27,27 @@ public class Post implements Parcelable {
     }
 
 
+    protected Post(Parcel in) {
+        email = in.readString();
+        content = in.readString();
+        skill = in.readString();
+        idea_visible = in.readByte() != 0;
+        user = in.readString();
+        overview = in.readString();
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -34,6 +55,11 @@ public class Post implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeString(email);
+        parcel.writeString(content);
+        parcel.writeString(skill);
+        parcel.writeByte((byte) (idea_visible ? 1 : 0));
+        parcel.writeString(user);
+        parcel.writeString(overview);
     }
 }
