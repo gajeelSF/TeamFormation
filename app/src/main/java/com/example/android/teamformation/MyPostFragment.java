@@ -17,6 +17,8 @@ import com.parse.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,6 +84,5 @@ public class MyPostFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_post, container, false);
     }
-
 
 }

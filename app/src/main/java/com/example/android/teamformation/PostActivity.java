@@ -47,6 +47,7 @@ public class PostActivity extends AppCompatActivity {
 
         postObject.saveInBackground();
 
+        setResult(RESULT_OK, null);
         finish();
 
     }

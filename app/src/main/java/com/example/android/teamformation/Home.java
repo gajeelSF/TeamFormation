@@ -39,7 +39,7 @@ public class Home extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent post = new Intent(view.getContext() , PostActivity.class);
-                startActivity(post);
+                startActivityForResult(post, 1);
 
             }
         });
@@ -109,5 +109,15 @@ public class Home extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            Intent refresh = new Intent(this, Home.class);
+            startActivity(refresh);
+            this.finish();
+        }
     }
 }
