@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -99,6 +98,11 @@ public class Home extends AppCompatActivity
             manager.beginTransaction().replace(R.id.layout_for_fragements, timelineFragment).commit();
 
         } else if (id == R.id.nav_user) {
+
+        } else if (id == R.id.nav_my_post) {
+            MyPostFragment myPostFragment = new MyPostFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.layout_for_fragements, myPostFragment).commit();
 
         }
         // aDD A COMMENT

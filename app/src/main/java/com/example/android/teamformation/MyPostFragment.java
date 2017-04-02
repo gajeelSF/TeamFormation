@@ -19,11 +19,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TimelineFragment extends Fragment {
+public class MyPostFragment extends Fragment {
 
     ArrayList<Post> arrayOfPosts = new ArrayList<>();
 
-    public TimelineFragment() {
+    public MyPostFragment() {
         // Required empty public constructor
     }
 
@@ -32,6 +32,10 @@ public class TimelineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        query.whereEqualTo("user", currentUser.getUsername());
+        Toast login = Toast.makeText(getContext(), "????", Toast.LENGTH_SHORT);
+        login.show();
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> postList, ParseException e) {
                 if (e == null) {
@@ -45,7 +49,7 @@ public class TimelineFragment extends Fragment {
                         arrayOfPosts.add(newPost);
                     }
                     PostAdapter postAdapter = new PostAdapter(getContext(), arrayOfPosts);
-                    ListView listView = (ListView) getView().findViewById(R.id.timeline);
+                    ListView listView = (ListView) getView().findViewById(R.id.myPost);
                     listView.setAdapter(postAdapter);
 
 
@@ -59,12 +63,9 @@ public class TimelineFragment extends Fragment {
         });
 
 
-
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timeline, container, false);
+        return inflater.inflate(R.layout.fragment_my_post, container, false);
     }
-
-
 
 
 }

@@ -34,10 +34,7 @@ public class PostActivity extends AppCompatActivity {
         EditText emailText = (EditText) findViewById(R.id.email);
         EditText skillText = (EditText) findViewById(R.id.skill);
         EditText ideaText = (EditText) findViewById(R.id.idea);
-
-        System.out.println((String) emailText.getText().toString());
-        System.out.println((String) skillText.getText().toString());
-        System.out.println((String) ideaText.getText().toString());
+        EditText overviewText = (EditText) findViewById(R.id.overview);
 
         ParseObject postObject = new ParseObject("Post");
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -45,6 +42,8 @@ public class PostActivity extends AppCompatActivity {
         postObject.put("email", emailText.getText().toString());
         postObject.put("skill", skillText.getText().toString());
         postObject.put("content", ideaText.getText().toString());
+        postObject.put("overview", overviewText.getText().toString());
+
 
         postObject.saveInBackground();
 

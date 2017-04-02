@@ -33,7 +33,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
         // Lookup view for data population
         TextView tvSkill = (TextView) convertView.findViewById(R.id.skill);
 
-        TextView tvContent = (TextView) convertView.findViewById(R.id.content);
+        TextView tvOverview = (TextView) convertView.findViewById(R.id.overview);
         TextView tvUser = (TextView) convertView.findViewById(R.id.user);
         // Populate the data into the template view using the data object
 
@@ -42,10 +42,10 @@ public class PostAdapter extends ArrayAdapter<Post> {
         }
         tvSkill.setText(post.skill);
 
-        if(post.content == null) {
-            post.content = "No content";
+        if(post.overview == null) {
+            post.overview = "No overview";
         }
-        tvContent.setText(post.content);
+        tvOverview.setText(post.overview);
 
         if(post.user == null ) {
             post.user = "Unknown User";
